@@ -1,0 +1,97 @@
+from z3 import *
+
+# Create a list of 48 integers
+dumas = [Int("x_%s" % i) for i in range(48)]
+cody = 518 # or 1292
+
+# Create the SMT solver instance and feed it with constraints
+s = Solver()
+s.add(
+    Or(dumas[0] + cody * dumas[1] + dumas[2] == 17234,      dumas[0] + cody * dumas[1] + dumas[2] == 42776),
+    Or(dumas[0] + dumas[1] + cody * dumas[2] == 35329,      dumas[0] + dumas[1] + cody * dumas[2] == 87961),
+    Or(dumas[12] + cody * dumas[13] + dumas[14] == 25080,   dumas[12] + cody * dumas[13] + dumas[14] == 62232),
+    Or(dumas[12] + dumas[13] + cody * dumas[14] == 147438,  dumas[12] + dumas[13] + cody * dumas[14] == 59202),
+    Or(dumas[15] + cody * dumas[16] + dumas[17] == 27661,   dumas[15] + cody * dumas[16] + dumas[17] == 68683),
+    Or(dumas[15] + dumas[16] + cody * dumas[17] == 144852,  dumas[15] + dumas[16] + cody * dumas[17] == 58164),
+    Or(dumas[18] + cody * dumas[19] + dumas[20] == 128064,  dumas[18] + cody * dumas[19] + dumas[20] == 51438),
+    Or(dumas[18] + dumas[19] + cody * dumas[20] == 135810,  dumas[18] + dumas[19] + cody * dumas[20] == 54540),
+    Or(dumas[21] + cody * dumas[22] + dumas[23] == 39570,   dumas[21] + cody * dumas[22] + dumas[23] == 98394),
+    Or(dumas[21] + dumas[22] + cody * dumas[23] == 135833,  dumas[21] + dumas[22] + cody * dumas[23] == 54563),
+    Or(dumas[24] + cody * dumas[25] + dumas[26] == 26640,   dumas[24] + cody * dumas[25] + dumas[26] == 66114),
+    Or(dumas[24] + dumas[25] + cody * dumas[26] == 129373,  dumas[24] + dumas[25] + cody * dumas[26] == 51973),
+    Or(dumas[27] + cody * dumas[28] + dumas[29] == 25071,   dumas[27] + cody * dumas[28] + dumas[29] == 62223),
+    Or(dumas[27] + dumas[28] + cody * dumas[29] == 144847,  dumas[27] + dumas[28] + cody * dumas[29] == 58159),
+    Or(dumas[30] + cody * dumas[31] + dumas[32] == 143547,  dumas[30] + cody * dumas[31] + dumas[32] == 57633),
+    Or(dumas[30] + dumas[31] + cody * dumas[32] == 35402,   dumas[30] + dumas[31] + cody * dumas[32] == 88034),
+    Or(dumas[33] + cody * dumas[34] + dumas[35] == 107320,  dumas[33] + cody * dumas[34] + dumas[35] == 43078),
+    Or(dumas[33] + dumas[34] + cody * dumas[35] == 17228,   dumas[33] + dumas[34] + cody * dumas[35] == 42770),
+    Or(dumas[36] + cody * dumas[37] + dumas[38] == 25556,   dumas[36] + cody * dumas[37] + dumas[38] == 63482),
+    Or(dumas[36] + dumas[37] + cody * dumas[38] == 26073,   dumas[36] + dumas[37] + cody * dumas[38] == 64773),
+    Or(dumas[39] + cody * dumas[40] + dumas[41] == 27627,   dumas[39] + cody * dumas[40] + dumas[41] == 68649),
+    Or(dumas[39] + dumas[40] + cody * dumas[41] == 115125,  dumas[39] + dumas[40] + cody * dumas[41] == 46239),
+    Or(dumas[3] + cody * dumas[4] + dumas[5] == 19862,      dumas[3] + cody * dumas[4] + dumas[5] == 49274),
+    Or(dumas[3] + dumas[4] + cody * dumas[5] == 100914,     dumas[3] + dumas[4] + cody * dumas[5] == 40542),
+    Or(dumas[42] + cody * dumas[43] + dumas[44] == 26019,   dumas[42] + cody * dumas[43] + dumas[44] == 64719),
+    Or(dumas[42] + dumas[43] + cody * dumas[44] == 35842,   dumas[42] + dumas[43] + cody * dumas[44] == 89248),
+    Or(dumas[45] + cody * dumas[46] + dumas[47] == 39501,   dumas[45] + cody * dumas[46] + dumas[47] == 98325),
+    Or(dumas[45] + dumas[46] + cody * dumas[47] == 29161,   dumas[45] + dumas[46] + cody * dumas[47] == 72505),
+    Or(dumas[6] + cody * dumas[7] + dumas[8] == 152553,     dumas[6] + cody * dumas[7] + dumas[8] == 61221),
+    Or(dumas[6] + dumas[7] + cody * dumas[8] == 27099,      dumas[6] + dumas[7] + cody * dumas[8] == 67347),
+    Or(dumas[9] + cody * dumas[10] + dumas[11] == 18857,    dumas[9] + cody * dumas[10] + dumas[11] == 46721),
+    Or(dumas[9] + dumas[10] + cody * dumas[11] == 122890,   dumas[9] + dumas[10] + cody * dumas[11] == 49360),
+    # Is it possible to do the following with a list comprehension ???
+    And(dumas[0] > 0, dumas[0] < 128),
+    And(dumas[1] > 0, dumas[1] < 128),
+    And(dumas[2] > 0, dumas[2] < 128),
+    And(dumas[3] > 0, dumas[3] < 128),
+    And(dumas[4] > 0, dumas[4] < 128),
+    And(dumas[5] > 0, dumas[5] < 128),
+    And(dumas[6] > 0, dumas[6] < 128),
+    And(dumas[7] > 0, dumas[7] < 128),
+    And(dumas[8] > 0, dumas[8] < 128),
+    And(dumas[9] > 0, dumas[9] < 128),
+    And(dumas[10] > 0, dumas[10] < 128),
+    And(dumas[11] > 0, dumas[11] < 128),
+    And(dumas[12] > 0, dumas[12] < 128),
+    And(dumas[13] > 0, dumas[13] < 128),
+    And(dumas[14] > 0, dumas[14] < 128),
+    And(dumas[15] > 0, dumas[15] < 128),
+    And(dumas[16] > 0, dumas[16] < 128),
+    And(dumas[17] > 0, dumas[17] < 128),
+    And(dumas[18] > 0, dumas[18] < 128),
+    And(dumas[19] > 0, dumas[19] < 128),
+    And(dumas[20] > 0, dumas[20] < 128),
+    And(dumas[21] > 0, dumas[21] < 128),
+    And(dumas[22] > 0, dumas[22] < 128),
+    And(dumas[23] > 0, dumas[23] < 128),
+    And(dumas[24] > 0, dumas[24] < 128),
+    And(dumas[25] > 0, dumas[25] < 128),
+    And(dumas[26] > 0, dumas[26] < 128),
+    And(dumas[27] > 0, dumas[27] < 128),
+    And(dumas[28] > 0, dumas[28] < 128),
+    And(dumas[29] > 0, dumas[29] < 128),
+    And(dumas[30] > 0, dumas[30] < 128),
+    And(dumas[31] > 0, dumas[31] < 128),
+    And(dumas[32] > 0, dumas[32] < 128),
+    And(dumas[33] > 0, dumas[33] < 128),
+    And(dumas[34] > 0, dumas[34] < 128),
+    And(dumas[35] > 0, dumas[35] < 128),
+    And(dumas[36] > 0, dumas[36] < 128),
+    And(dumas[37] > 0, dumas[37] < 128),
+    And(dumas[38] > 0, dumas[38] < 128),
+    And(dumas[39] > 0, dumas[39] < 128),
+    And(dumas[40] > 0, dumas[40] < 128),
+    And(dumas[41] > 0, dumas[41] < 128),
+    And(dumas[42] > 0, dumas[42] < 128),
+    And(dumas[43] > 0, dumas[43] < 128),
+    And(dumas[44] > 0, dumas[44] < 128),
+    And(dumas[45] > 0, dumas[45] < 128),
+    And(dumas[46] > 0, dumas[46] < 128),
+    And(dumas[47] > 0, dumas[47] < 128)
+)
+
+if s.check() == sat:
+    m = s.model()
+    r = [m.evaluate(dumas[i]) for i in range(48)]
+    m = ''.join([chr(i.as_long()) for i in r])
+    print(m)
